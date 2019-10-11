@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum MBProgressHudSwiftMode:NSInteger {
+public enum MBProgressHudSwiftMode:NSInteger {
     
     case Indeterminate ///UIActivityIndicatorView.
     case Determinate /// A round, pie-chart like, progress view.
@@ -18,14 +18,14 @@ enum MBProgressHudSwiftMode:NSInteger {
     case Text /// Shows only labels.
 }
 
-enum MBProgressHudSwiftAnimation:NSInteger {
+public enum MBProgressHudSwiftAnimation:NSInteger {
     case Fade /// Opacity animation
     case Zoom /// Opacity + scale animation (zoom in when appearing zoom out when disappearing)
     case ZoomOut /// Opacity + scale animation (zoom out style)
     case ZoomIn /// Opacity + scale animation (zoom in style)
 }
 
-enum MBProgressHudSwiftBackgroundStyle {
+public enum MBProgressHudSwiftBackgroundStyle {
     case SolidColor  /// Solid color background
     case Blur /// UIVisualEffectView or UIToolbar.layer background view
 }
@@ -36,7 +36,7 @@ enum MBProgressHudSwiftBackgroundStyle {
 
 typealias MBProgressHudSwiftCompletionBlock = ()->()
 
-func MBAssertForMainThread(){
+public func MBAssertForMainThread(){
     assert(Thread.current.isMainThread, "MB needs access in main thread")
 
 }
@@ -46,7 +46,7 @@ func MBAssertForMainThread(){
 
 extension MBProgressHudSwift{
     
-    func show(animated:Bool){
+   public func show(animated:Bool){
         MBAssertForMainThread()
         minShowTimer?.invalidate()
         useAnimation = animated
@@ -63,7 +63,7 @@ extension MBProgressHudSwift{
         
     }
     
-    func hide(animated:Bool){
+   public func hide(animated:Bool){
         MBAssertForMainThread()
         graceTimer?.invalidate()
         useAnimation = animated
@@ -84,7 +84,7 @@ extension MBProgressHudSwift{
         
     }
     
-    func hide(animated:Bool,afterDelay:TimeInterval){
+   public func hide(animated:Bool,afterDelay:TimeInterval){
         hideDelayTimer?.invalidate()
         let timer = Timer.init(timeInterval: afterDelay, target: self, selector: #selector(handleHideTimer(timer:)), userInfo: nil, repeats: false)
         RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
@@ -97,7 +97,7 @@ extension MBProgressHudSwift{
 //MARK:public class method
 extension MBProgressHudSwift{
     
-    class func showHud(addedToView view:UIView,withAnimated animated:Bool) -> MBProgressHudSwift{
+    class  public func showHud(addedToView view:UIView,withAnimated animated:Bool) -> MBProgressHudSwift{
         let hud = MBProgressHudSwift(view: view)
         hud.removeFromSuperViewOnHide = true
         view.addSubview(hud)
@@ -106,7 +106,7 @@ extension MBProgressHudSwift{
     }
     
     
-    class func hideHud(forView view:UIView,withAnimated animated:Bool) -> Bool{
+    class public func hideHud(forView view:UIView,withAnimated animated:Bool) -> Bool{
         if let hud = Hud(forView: view){
             hud.removeFromSuperViewOnHide = true
             hud.hide(animated: animated)
@@ -115,7 +115,7 @@ extension MBProgressHudSwift{
         return false
     }
     
-    class func Hud(forView view:UIView) -> MBProgressHudSwift?{
+    class public func Hud(forView view:UIView) -> MBProgressHudSwift?{
         for subview:UIView in view.subviews
         {
             if subview.isKind(of: self)
@@ -131,34 +131,34 @@ extension MBProgressHudSwift{
 }
 
 
-class MBProgressHudSwift: UIView {
+public class MBProgressHudSwift: UIView {
     
     static let MBDefaultPadding:CGFloat = 4
     static let MBDefaultLabelFontSize:CGFloat = 16
     static let MBDefaultDetailsLabelFontSize:CGFloat = 12
     
-    var contentColor:UIColor = .white{
+   public var contentColor:UIColor = .white{
         didSet{
             if oldValue != self.contentColor {
                 updateViewsForColor(color: self.contentColor)
             }
         }
     }
-    var removeFromSuperViewOnHide:Bool = false
+   public var removeFromSuperViewOnHide:Bool = false
     weak var delegate:MBProgressHudSwiftDelegate?
     var completionBlock:MBProgressHudSwiftCompletionBlock?
     
-    var graceTime:TimeInterval = 0.0
-    var minShowTime:TimeInterval = 0.0
-    var mode:MBProgressHudSwiftMode = .Indeterminate{
+   public var graceTime:TimeInterval = 0.0
+   public var minShowTime:TimeInterval = 0.0
+   public var mode:MBProgressHudSwiftMode = .Indeterminate{
         didSet{
             if oldValue != self.mode {
                 updateIndicators()
             }
         }
     }
-    var animationType:MBProgressHudSwiftAnimation = .Fade
-    var offset:CGPoint = .zero{
+   public var animationType:MBProgressHudSwiftAnimation = .Fade
+   public var offset:CGPoint = .zero{
         didSet{
             if oldValue != self.offset
             {
@@ -166,28 +166,28 @@ class MBProgressHudSwift: UIView {
             }
         }
     }
-    var margin:CGFloat = 20.0{
+   public var margin:CGFloat = 20.0{
         didSet{
             if oldValue != self.margin {
                 setNeedsUpdateConstraints()
             }
         }
     }
-    var minSize:CGSize = .zero{
+   public var minSize:CGSize = .zero{
         didSet{
             if oldValue != self.minSize {
                 setNeedsUpdateConstraints()
             }
         }
     }
-    var squre:Bool = false{
+   public var squre:Bool = false{
         didSet{
             if oldValue != self.squre {
                 setNeedsUpdateConstraints()
             }
         }
     }
-    var defaultMotionEffectsEnabled = true{
+   public var defaultMotionEffectsEnabled = true{
         didSet{
             if oldValue != self.defaultMotionEffectsEnabled
             {
@@ -206,7 +206,7 @@ class MBProgressHudSwift: UIView {
             }
         }
     }
-    var progressObject:Progress?{
+   public var progressObject:Progress?{
         didSet{
             if oldValue != self.progressObject
             {
@@ -214,7 +214,7 @@ class MBProgressHudSwift: UIView {
             }
         }
     }
-    var customView:UIView!{
+   public var customView:UIView!{
         didSet{
             if oldValue != self.customView && self.mode == .CustomView
             {
@@ -269,7 +269,7 @@ class MBProgressHudSwift: UIView {
         return temp
     }()
 
-    convenience init(view:UIView)
+   public convenience init(view:UIView)
     {
         self.init(frame: view.bounds)
     }
@@ -600,14 +600,14 @@ class MBProgressHudSwift: UIView {
 //MARK: constraints
 extension MBProgressHudSwift{
     
-    override func didMoveToSuperview() {
+    override public func didMoveToSuperview() {
         if superview != nil
         {
             frame = superview!.bounds
         }
     }
     
-    override func updateConstraints() {
+    override public func updateConstraints() {
         var bezelConstraints:[NSLayoutConstraint] = [NSLayoutConstraint]()
         let metrics = ["margin":margin]
         var subviews = [topSpacer,label,detailLabel,button,bottomSpacer]
@@ -686,7 +686,7 @@ extension MBProgressHudSwift{
         
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         if needsUpdateConstraints() == false
         {
             updatePaddingConstraints()
