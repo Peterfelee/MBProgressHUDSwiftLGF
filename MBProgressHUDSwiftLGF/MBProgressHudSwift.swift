@@ -53,7 +53,7 @@ extension MBProgressHudSwift{
         hasFinished = false
         if graceTime > 0.0{
             let timer = Timer.init(timeInterval: graceTime, target: self, selector: #selector(handleGraceTimer(timer:)), userInfo: nil, repeats: false)
-            RunLoop.current.add(timer, forMode: .common)
+            RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
             graceTimer = timer
         }
         else
@@ -72,7 +72,7 @@ extension MBProgressHudSwift{
             let interval = Date().timeIntervalSince(showStarted!)
             if interval < minShowTime{
                 let timer = Timer.init(timeInterval: minShowTime - interval, target: self, selector: #selector(handleMinShowTimer(timer:)), userInfo: nil, repeats: false)
-                RunLoop.current.add(timer, forMode: .common)
+                RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
                 minShowTimer = timer
             }
         }
@@ -87,7 +87,7 @@ extension MBProgressHudSwift{
     func hide(animated:Bool,afterDelay:TimeInterval){
         hideDelayTimer?.invalidate()
         let timer = Timer.init(timeInterval: afterDelay, target: self, selector: #selector(handleHideTimer(timer:)), userInfo: nil, repeats: false)
-        RunLoop.current.add(timer, forMode: .common)
+        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
         hideDelayTimer = timer
     }
 }
@@ -300,7 +300,7 @@ class MBProgressHudSwift: UIView {
             {
                 self.progressObjectDisplayLink?.invalidate()
                 self.progressObjectDisplayLink = newValue
-                self.progressObjectDisplayLink?.add(to: RunLoop.main, forMode: .default)
+                self.progressObjectDisplayLink?.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
             }
         }
     }
@@ -369,10 +369,10 @@ class MBProgressHudSwift: UIView {
             if isActivityIndicator == false || isActivityIndicator == nil {
                 indicator?.removeFromSuperview()
                 if #available(iOS 13.0, *) {
-                    indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+                    indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.medium)
                 } else {
                     // Fallback on earlier versions
-                    indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+                    indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.whiteLarge)
                 }
                 (indicator as! UIActivityIndicatorView).startAnimating()
                 bezelView.addSubview(indicator!)
@@ -452,11 +452,11 @@ class MBProgressHudSwift: UIView {
     
     
     private func registerForNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(statusBarOrientationDidChange(notify:)), name: UIApplication.didChangeStatusBarOrientationNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(statusBarOrientationDidChange(notify:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation , object: nil)
     }
     
     private func unregisterFromNotification(){
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
     }
   
     
