@@ -41,9 +41,9 @@ public func MBAssertForMainThread(){
 
 }
 
+/*-----------------------------------------public--------------------------------------------------*/
 
 //MARK:public Instance method
-
 extension MBProgressHudSwift{
     
    public func show(animated:Bool){
@@ -53,7 +53,7 @@ extension MBProgressHudSwift{
         hasFinished = false
         if graceTime > 0.0{
             let timer = Timer.init(timeInterval: graceTime, target: self, selector: #selector(handleGraceTimer(timer:)), userInfo: nil, repeats: false)
-            RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+            RunLoop.current.add(timer, forMode: .common)
             graceTimer = timer
         }
         else
@@ -72,7 +72,7 @@ extension MBProgressHudSwift{
             let interval = Date().timeIntervalSince(showStarted!)
             if interval < minShowTime{
                 let timer = Timer.init(timeInterval: minShowTime - interval, target: self, selector: #selector(handleMinShowTimer(timer:)), userInfo: nil, repeats: false)
-                RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+                RunLoop.current.add(timer, forMode: .common)
                 minShowTimer = timer
             }
         }
@@ -87,7 +87,7 @@ extension MBProgressHudSwift{
    public func hide(animated:Bool,afterDelay:TimeInterval){
         hideDelayTimer?.invalidate()
         let timer = Timer.init(timeInterval: afterDelay, target: self, selector: #selector(handleHideTimer(timer:)), userInfo: nil, repeats: false)
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+    RunLoop.current.add(timer, forMode: .common)
         hideDelayTimer = timer
     }
 }
@@ -132,33 +132,31 @@ extension MBProgressHudSwift{
 
 
 public class MBProgressHudSwift: UIView {
-    
+    //MARK:some constants
     static let MBDefaultPadding:CGFloat = 4
     static let MBDefaultLabelFontSize:CGFloat = 16
     static let MBDefaultDetailsLabelFontSize:CGFloat = 12
     
-   public var contentColor:UIColor = .white{
-        didSet{
-            if oldValue != self.contentColor {
-                updateViewsForColor(color: self.contentColor)
-            }
-        }
-    }
-   public var removeFromSuperViewOnHide:Bool = false
-    weak var delegate:MBProgressHudSwiftDelegate?
-    var completionBlock:MBProgressHudSwiftCompletionBlock?
-    
-   public var graceTime:TimeInterval = 0.0
-   public var minShowTime:TimeInterval = 0.0
-   public var mode:MBProgressHudSwiftMode = .Indeterminate{
+    //MARK:public properties
+    public var removeFromSuperViewOnHide:Bool = false
+    public var graceTime:TimeInterval = 0.0
+    public var minShowTime:TimeInterval = 0.0
+    public var animationType:MBProgressHudSwiftAnimation = .Fade
+    public var mode:MBProgressHudSwiftMode = .Indeterminate{
         didSet{
             if oldValue != self.mode {
                 updateIndicators()
             }
         }
     }
-   public var animationType:MBProgressHudSwiftAnimation = .Fade
-   public var offset:CGPoint = .zero{
+    public var contentColor:UIColor = .white{
+        didSet{
+            if oldValue != self.contentColor {
+                updateViewsForColor(color: self.contentColor)
+            }
+        }
+    }
+    public var offset:CGPoint = .zero{
         didSet{
             if oldValue != self.offset
             {
@@ -166,28 +164,28 @@ public class MBProgressHudSwift: UIView {
             }
         }
     }
-   public var margin:CGFloat = 20.0{
+    public var margin:CGFloat = 20.0{
         didSet{
             if oldValue != self.margin {
                 setNeedsUpdateConstraints()
             }
         }
     }
-   public var minSize:CGSize = .zero{
+    public var minSize:CGSize = .zero{
         didSet{
             if oldValue != self.minSize {
                 setNeedsUpdateConstraints()
             }
         }
     }
-   public var squre:Bool = false{
+    public var squre:Bool = false{
         didSet{
             if oldValue != self.squre {
                 setNeedsUpdateConstraints()
             }
         }
     }
-   public var defaultMotionEffectsEnabled = true{
+    public var defaultMotionEffectsEnabled = true{
         didSet{
             if oldValue != self.defaultMotionEffectsEnabled
             {
@@ -195,18 +193,8 @@ public class MBProgressHudSwift: UIView {
             }
         }
     }
-    @objc var progress:Float = 0.0//0-1
-    {
-        didSet{
-            if oldValue != self.progress {
-                let indicator = self.indicator
-                if (indicator?.responds(to: #selector(setter:MBProgressHudSwift.progress)))!{
-                    indicator?.setValue(self.progress, forKey: "progress")
-                }
-            }
-        }
-    }
-   public var progressObject:Progress?{
+    
+    public var progressObject:Progress?{
         didSet{
             if oldValue != self.progressObject
             {
@@ -214,7 +202,7 @@ public class MBProgressHudSwift: UIView {
             }
         }
     }
-   public var customView:UIView!{
+    public var customView:UIView!{
         didSet{
             if oldValue != self.customView && self.mode == .CustomView
             {
@@ -223,16 +211,16 @@ public class MBProgressHudSwift: UIView {
         }
     }
     
-   lazy private(set) var bezelView:MBBackgroundView = {
-    let temp = MBBackgroundView(frame:.zero)
-    temp.translatesAutoresizingMaskIntoConstraints = false
-    temp.layer.cornerRadius = 5.0
-    temp.alpha = 0
-    
-    return temp
+    open lazy private(set) var bezelView:MBBackgroundView = {
+        let temp = MBBackgroundView(frame:.zero)
+        temp.translatesAutoresizingMaskIntoConstraints = false
+        temp.layer.cornerRadius = 5.0
+        temp.alpha = 0
+        
+        return temp
     }()
     
-    lazy private(set) var backgroundView:MBBackgroundView = {
+    open lazy private(set) var backgroundView:MBBackgroundView = {
         let temp = MBBackgroundView(frame: .zero)
         temp.style = .SolidColor
         temp.backgroundColor = .clear
@@ -241,7 +229,7 @@ public class MBProgressHudSwift: UIView {
         return temp
     }()
     
-    lazy private(set) var label:UILabel = {
+    open lazy private(set) var label:UILabel = {
         let temp = UILabel()
         temp.adjustsFontSizeToFitWidth = false
         temp.textAlignment = .center
@@ -251,7 +239,7 @@ public class MBProgressHudSwift: UIView {
         return temp
     }()
     
-    lazy private(set) var detailLabel:UILabel = {
+    open lazy private(set) var detailLabel:UILabel = {
         let temp = UILabel()
         temp.adjustsFontSizeToFitWidth = false
         temp.textAlignment = .center
@@ -262,33 +250,32 @@ public class MBProgressHudSwift: UIView {
         return temp
     }()
     
-    lazy private(set) var button:UIButton = {
-        let temp = UIButton(type: .custom)
+    open lazy private(set) var button:MBButton = {
+        let temp = MBButton(type: .custom)
         temp.titleLabel?.textAlignment = .center
         temp.titleLabel?.font = UIFont.boldSystemFont(ofSize:MBProgressHudSwift.MBDefaultLabelFontSize)
         return temp
     }()
-
-   public convenience init(view:UIView)
-    {
-        self.init(frame: view.bounds)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
    
-     
-     deinit {
-         unregisterFromNotification()
-     }
     
+    
+    weak var delegate:MBProgressHudSwiftDelegate?
+    var completionBlock:MBProgressHudSwiftCompletionBlock?
+    @objc var progress:Float = 0.0//0-1
+        {
+        didSet{
+            if oldValue != self.progress {
+                let indicator = self.indicator
+                if (indicator?.responds(to: #selector(setter:MBProgressHudSwift.progress)))!{
+                    indicator?.setValue(self.progress, forKey: "progress")
+                }
+            }
+        }
+    }
+    
+    
+   
+    //MARK:private properties
     private var opacity = 1.0
     private var hasFinished = false
     weak private var graceTimer:Timer?
@@ -300,23 +287,21 @@ public class MBProgressHudSwift: UIView {
             {
                 self.progressObjectDisplayLink?.invalidate()
                 self.progressObjectDisplayLink = newValue
-                self.progressObjectDisplayLink?.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+                self.progressObjectDisplayLink?.add(to: RunLoop.main, forMode: .default)
             }
         }
     }
     private var useAnimation:Bool = false
     private var showStarted:Date?
     private var indicator:UIView?
-    private var paddingConstraints:[NSLayoutConstraint]?
+    private var paddingConstraints:[NSLayoutConstraint] = [NSLayoutConstraint]()
     private var bezelConstraints:[NSLayoutConstraint]?
-
     lazy private var topSpacer:UIView = {
         let temp = UIView()
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.isHidden = true
         return temp
     }()
-    
     lazy private var bottomSpacer:UIView = {
         let temp = UIView()
         temp.translatesAutoresizingMaskIntoConstraints = false
@@ -324,6 +309,31 @@ public class MBProgressHudSwift: UIView {
         return temp
     }()
     
+    
+    //MARK:system methods
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    public convenience init(view:UIView)
+    {
+        self.init(frame: view.bounds)
+    }
+    
+    deinit {
+        unregisterFromNotification()
+        
+    }
+}
+
+
+/*-----------------------------------------private--------------------------------------------------*/
+//MARK:privaite initliaze methods
+extension MBProgressHudSwift{
     
     private func commonInit(){
         let  isLegacy = kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_0
@@ -351,7 +361,9 @@ public class MBProgressHudSwift: UIView {
         detailLabel.textColor = contentColor
         button.setTitleColor(contentColor, for: .normal)
         [label,detailLabel,button].forEach { (view) in
+            
             view.translatesAutoresizingMaskIntoConstraints = false
+            /* setContentCompressionResistancePriority（值越高，越不容易压缩，所以我取名为‘抗压缩’）*/
             view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .horizontal)
             view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .vertical)
             bezelView.addSubview(view)
@@ -369,10 +381,10 @@ public class MBProgressHudSwift: UIView {
             if isActivityIndicator == false || isActivityIndicator == nil {
                 indicator?.removeFromSuperview()
                 if #available(iOS 13.0, *) {
-                    indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.medium)
+                    indicator = UIActivityIndicatorView(style: .medium)
                 } else {
                     // Fallback on earlier versions
-                    indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.whiteLarge)
+                    indicator = UIActivityIndicatorView(style: .whiteLarge)
                 }
                 (indicator as! UIActivityIndicatorView).startAnimating()
                 bezelView.addSubview(indicator!)
@@ -445,35 +457,21 @@ public class MBProgressHudSwift: UIView {
                 temp.lineColor = color
             }
         }else{
-                indicator?.tintColor = color
+            indicator?.tintColor = color
         }
         
     }
     
     
     private func registerForNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(statusBarOrientationDidChange(notify:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(statusBarOrientationDidChange(notify:)), name: UIApplication.didChangeStatusBarOrientationNotification , object: nil)
     }
     
     private func unregisterFromNotification(){
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
-    }
-  
-    
-    @objc private func handleGraceTimer(timer:Timer){
-        if hasFinished == false
-        {
-            showUsingAnimation(animated: useAnimation)
-        }
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didChangeStatusBarOrientationNotification, object: nil)
     }
     
-    @objc private func handleMinShowTimer(timer:Timer){
-        hideUsingAnimation(animated: useAnimation)
-    }
     
-    @objc private func handleHideTimer(timer:Timer){
-        hide(animated: (timer.userInfo != nil))
-    }
     
     private func showUsingAnimation(animated:Bool){
         bezelView.layer.removeAllAnimations()
@@ -503,7 +501,7 @@ public class MBProgressHudSwift: UIView {
         }
         else
         {
-           showStarted = nil
+            showStarted = nil
             bezelView.alpha = 0
             backgroundView.alpha = 1
             done()
@@ -581,6 +579,12 @@ public class MBProgressHudSwift: UIView {
         }
     }
     
+    
+}
+
+//MARK:selector method
+extension MBProgressHudSwift{
+    
     @objc private func updateProgressFromProgressObject(){
         progress = Float(progressObject!.fractionCompleted)
     }
@@ -593,9 +597,23 @@ public class MBProgressHudSwift: UIView {
         }
         frame = superview!.bounds
     }
- 
+    
+    
+    @objc private func handleGraceTimer(timer:Timer){
+        if hasFinished == false
+        {
+            showUsingAnimation(animated: useAnimation)
+        }
+    }
+    
+    @objc private func handleMinShowTimer(timer:Timer){
+        hideUsingAnimation(animated: useAnimation)
+    }
+    
+    @objc private func handleHideTimer(timer:Timer){
+        hide(animated: (timer.userInfo != nil))
+    }
 }
-
 
 //MARK: constraints
 extension MBProgressHudSwift{
@@ -674,7 +692,7 @@ extension MBProgressHudSwift{
             if offset > 0 {
                 let padding = NSLayoutConstraint(item: element, attribute: .top, relatedBy: .equal, toItem: subviews[offset - 1], attribute: .bottom, multiplier: 1.0, constant: 0)
                 bezelConstraints.append(padding)
-                paddingConstraints?.append(padding)
+                paddingConstraints.append(padding)
             }
         }
         
@@ -696,7 +714,7 @@ extension MBProgressHudSwift{
     
     private func updatePaddingConstraints(){
         var hasVisibleAncestors = false
-        paddingConstraints?.forEach({ (constraint) in
+        paddingConstraints.forEach({ (constraint) in
             if let firstView:UIView = constraint.firstItem as? UIView,let secondView:UIView = constraint.secondItem as? UIView{
                 let firstVisible = (firstView.isHidden == false)&&(firstView.intrinsicContentSize != CGSize.zero)
                 let secondVisible = (secondView.isHidden == false)&&(secondView.intrinsicContentSize != CGSize.zero)
@@ -741,8 +759,6 @@ extension MBProgressHudSwift{
     }
     
 }
-
-
 
 /**
 * A progress view for showing definite progress by filling up a circle (pie chart).
@@ -966,7 +982,7 @@ class MBBarProgressView: UIView {
     
 }
 
-class MBBackgroundView:UIView{
+open class MBBackgroundView:UIView{
     var style:MBProgressHudSwiftBackgroundStyle = .Blur
     {
         didSet{
@@ -1009,11 +1025,11 @@ class MBBackgroundView:UIView{
         updateForBackgroundStyle()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override var intrinsicContentSize: CGSize{
+    override open var intrinsicContentSize: CGSize{
         get{
             return .zero
         }
@@ -1049,6 +1065,47 @@ class MBBackgroundView:UIView{
         else
         {
             backgroundColor = self.color
+        }
+    }
+}
+
+public class MBButton:UIButton{
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        layer.borderWidth = 1.0
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = ceil(bounds.height/2)
+    }
+    
+    public override var intrinsicContentSize: CGSize{
+        get{
+            if Int(self.allControlEvents.rawValue) == 0 || self.currentTitle == nil || self.currentImage == nil
+            {
+                return .zero
+            }
+            var size = super.intrinsicContentSize
+            size.width += 20.0
+            return size
+        }
+    }
+    
+    public override func setTitleColor(_ color: UIColor?, for state: UIControl.State) {
+        super.setTitleColor(color, for: state)
+        layer.borderColor = color?.cgColor
+    }
+    
+    public override var isHighlighted: Bool
+    {
+        didSet{
+            let baseColor = self.titleColor(for: .selected)
+            backgroundColor = self.isHighlighted ? baseColor?.withAlphaComponent(0.1):.clear
         }
     }
 }

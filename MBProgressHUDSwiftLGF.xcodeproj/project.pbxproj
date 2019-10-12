@@ -28,6 +28,7 @@
 		E7A175602350790F00B600C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A175622350790F00B600C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHudSwift.swift; sourceTree = "<group>"; };
+		E7FD3F71235180ED001359BE /* MBProgressHUDSwiftLGF-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUDSwiftLGF-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +88,7 @@
 				E7A1755D2350790F00B600C6 /* Assets.xcassets */,
 				E7A1755F2350790F00B600C6 /* LaunchScreen.storyboard */,
 				E7A175622350790F00B600C6 /* Info.plist */,
+				E7FD3F71235180ED001359BE /* MBProgressHUDSwiftLGF-Bridging-Header.h */,
 			);
 			path = MBProgressHUDSwiftLGF;
 			sourceTree = "<group>";
@@ -125,6 +127,7 @@
 				TargetAttributes = {
 					E7A175502350790C00B600C6 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -291,7 +294,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -345,7 +348,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -355,6 +358,7 @@
 			baseConfigurationReference = 896634D5CF6FC12EF252EBF6 /* Pods-MBProgressHUDSwiftLGF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8ZCZ7D853;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
@@ -365,7 +369,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lgf.MBProgressHUDSwiftLGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "MBProgressHUDSwiftLGF/MBProgressHUDSwiftLGF-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -375,6 +381,7 @@
 			baseConfigurationReference = 282E09D516C52299A94A852C /* Pods-MBProgressHUDSwiftLGF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8ZCZ7D853;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
@@ -385,7 +392,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.lgf.MBProgressHUDSwiftLGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "MBProgressHUDSwiftLGF/MBProgressHUDSwiftLGF-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

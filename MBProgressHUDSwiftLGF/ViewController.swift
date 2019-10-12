@@ -11,7 +11,7 @@ import SnapKit
 
 
 class ViewController: UIViewController {
-    let buttonTitles = ["重力","视频","网页","弹窗"]
+    let buttonTitles = ["重力","视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频","网页","弹窗"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -35,6 +35,10 @@ extension ViewController{
     @objc private func testClick(btn:UIButton){
         
         let hud = MBProgressHudSwift.showHud(addedToView: view, withAnimated: true)
+//        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+//        hud.mode = .text
+//        hud.label.text = "test modeel"
+//        hud.hide(animated: true, afterDelay: 5)
         switch btn.tag {
         case 1:
             hud.mode = .Text
@@ -48,7 +52,8 @@ extension ViewController{
            hud.mode = .Text
            hud.button.setTitle(btn.currentTitle, for: .normal)
         }
-        hud.hide(animated: true, afterDelay: 4)
+        
+        hud.hide(animated: true, afterDelay: 14)
     }
 
     private func createButton(title:String) -> UIButton {
