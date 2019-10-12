@@ -1086,7 +1086,7 @@ public class MBButton:UIButton{
     
     public override var intrinsicContentSize: CGSize{
         get{
-            if Int(self.allControlEvents.rawValue) == 0 || self.currentTitle == nil || self.currentImage == nil
+            if Int(self.allControlEvents.rawValue) == 0 && self.currentTitle == nil && self.currentImage == nil
             {
                 return .zero
             }
