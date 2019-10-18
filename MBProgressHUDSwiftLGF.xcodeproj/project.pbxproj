@@ -62,6 +62,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E753F18F2359AB9500EC1952 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */,
+				E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		E7A175482350790C00B600C6 = {
 			isa = PBXGroup;
 			children = (
@@ -83,10 +92,9 @@
 		E7A175532350790C00B600C6 /* MBProgressHUDSwiftLGF */ = {
 			isa = PBXGroup;
 			children = (
+				E753F18F2359AB9500EC1952 /* Header */,
 				E7A175542350790C00B600C6 /* AppDelegate.swift */,
 				E7A175582350790C00B600C6 /* ViewController.swift */,
-				E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */,
-				E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */,
 				E7A1755A2350790C00B600C6 /* Main.storyboard */,
 				E7A1755D2350790F00B600C6 /* Assets.xcassets */,
 				E7A1755F2350790F00B600C6 /* LaunchScreen.storyboard */,
