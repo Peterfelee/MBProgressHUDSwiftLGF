@@ -33,27 +33,21 @@ class ViewController: UIViewController {
 extension ViewController{
     
     @objc private func testClick(btn:UIButton){
-        
-        let hud = MBProgressHudSwift.showHud(addedToView: view, withAnimated: true)
-//        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-//        hud.mode = .text
-//        hud.label.text = "test modeel"
-//        hud.hide(animated: true, afterDelay: 5)
         switch btn.tag {
         case 1:
-            hud.mode = .Text
-            hud.label.text = btn.currentTitle
+            MBSwiftHelper.share.showTitle(titleString: btn.currentTitle)
         case 2:
-            hud.mode = .Text
-            hud.detailLabel.text = btn.currentTitle
+            MBSwiftHelper.share.showMessage(Message: btn.currentTitle)
         case 3:
-            hud.mode = .Indeterminate
+            MBSwiftHelper.share.autoShow()
         default:
-           hud.mode = .Text
-           hud.button.setTitle(btn.currentTitle, for: .normal)
+            MBSwiftHelper.share.showActionButton(buttonTitle: btn.currentTitle, buttonImage: nil, buttonAction: {
+                
+            })
         }
         
-        hud.hide(animated: true, afterDelay: 14)
+        MBSwiftHelper.share.hidden()
+
     }
 
     private func createButton(title:String) -> UIButton {
@@ -67,7 +61,6 @@ extension ViewController{
         temp.addTarget(self, action: #selector(testClick(btn:)), for: .touchUpInside)
         return temp
     }
-
 }
 
 
