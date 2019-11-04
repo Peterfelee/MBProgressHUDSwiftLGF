@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'MBProgressHUDSwiftLGF'
-s.version = '1.0.4'
+s.version = '1.0.5'
 s.license = 'MIT'
 s.summary = 'An MBProgressHUD With Swift5.0 on iOS.'
 s.homepage = 'https://github.com/Peterfelee/MBProgressHUDSwiftLGF'
@@ -9,6 +9,6 @@ s.source = { :git => 'https://github.com/Peterfelee/MBProgressHUDSwiftLGF.git', 
 s.requires_arc = true
 s.ios.deployment_target = '10.0'
 s.swift_versions = '5.0'
-s.source_files = 'MBProgressHUDSwiftLGF/MBProgressHudSwift.swift,MBProgressHUDSwiftLGF/MBSwiftHelper.swift'
+s.source_files = 'MBProgressHUDSwiftLGF/Header/*.swift'
 #s.resources = ''
 end

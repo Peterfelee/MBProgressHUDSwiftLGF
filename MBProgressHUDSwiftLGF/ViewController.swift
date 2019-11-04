@@ -34,13 +34,13 @@ extension ViewController{
     
     @objc private func testClick(btn:UIButton){
         switch btn.tag {
-        case 1:
+        case 1://展示一个单行的文字，过长的话自动省略显示
             MBSwiftHelper.share.showTitle(titleString: btn.currentTitle)
-        case 2:
+        case 2://展示一个多行的文字，过长的话自动换行
             MBSwiftHelper.share.showMessage(Message: btn.currentTitle)
-        case 3:
+        case 3://展示白底的菊花转 可以自动移除
             MBSwiftHelper.share.autoShow()
-        default:
+        default://展示带有title的按钮，事件即为点击的按钮事件
             MBSwiftHelper.share.showActionButton(buttonTitle: btn.currentTitle, buttonImage: nil, buttonAction: {
                 
             })
