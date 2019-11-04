@@ -12,7 +12,7 @@ public class MBSwiftHelper: NSObject {
     
     private var hud:MBProgressHudSwift?
     
-    static let share:MBSwiftHelper = MBSwiftHelper()
+    public  static let share:MBSwiftHelper = MBSwiftHelper()
     
     private var action:(()->())?
     
