@@ -11,7 +11,7 @@ import SnapKit
 
 
 class ViewController: UIViewController {
-    let buttonTitles = ["重力","视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频","网页","弹窗"]
+    let buttonTitles = ["重力","视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频视频","网页","弹窗","带背景的菊花转"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -38,14 +38,19 @@ extension ViewController{
             MBSwiftHelper.share.showTitle(titleString: btn.currentTitle)
         case 2://展示一个多行的文字，过长的话自动换行
             MBSwiftHelper.share.showMessage(Message: btn.currentTitle)
-        case 3://展示白底的菊花转 可以自动移除
+        case 3://展示透明背景的菊花转 可以自动移除
             MBSwiftHelper.share.autoShow()
+        case 5://展示有背景色的菊花转
+            let hud = MBProgressHudSwift(frame: .zero)
+            hud.show(animated: true)
+            hud.backgroundColor = UIColor.green.withAlphaComponent(0.2)
+            hud.hide(animated: true, afterDelay: 1.5)
         default://展示带有title的按钮，事件即为点击的按钮事件
             MBSwiftHelper.share.showActionButton(buttonTitle: btn.currentTitle, buttonImage: nil, buttonAction: {
-                
+                MBSwiftHelper.share.showMessage(Message: "按钮点击事件")
+                MBSwiftHelper.share.hidden(withAnimated: true, delayTime: 2)
             })
         }
-        
         MBSwiftHelper.share.hidden()
 
     }

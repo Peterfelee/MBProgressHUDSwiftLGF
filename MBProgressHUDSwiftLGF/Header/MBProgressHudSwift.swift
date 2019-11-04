@@ -51,6 +51,14 @@ extension MBProgressHudSwift{
         minShowTimer?.invalidate()
         useAnimation = animated
         hasFinished = false
+    if self.superview == nil
+    {
+        if let temp = MBProgressHudSwift.Hud(forView: UIApplication.shared.keyWindow!)
+        {
+            temp.removeFromSuperview()
+        }
+        UIApplication.shared.keyWindow?.addSubview(self)
+    }
         if graceTime > 0.0{
             let timer = Timer.init(timeInterval: graceTime, target: self, selector: #selector(handleGraceTimer(timer:)), userInfo: nil, repeats: false)
             RunLoop.current.add(timer, forMode: .common)

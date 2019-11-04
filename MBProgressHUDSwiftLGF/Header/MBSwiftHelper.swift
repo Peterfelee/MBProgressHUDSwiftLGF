@@ -121,6 +121,7 @@ public class MBSwiftHelper: NSObject {
 extension MBSwiftHelper{
     
     @objc private func buttonClick(){
+        hud?.hide(animated: true, afterDelay: 0)
         if action != nil
         {
             action!()
