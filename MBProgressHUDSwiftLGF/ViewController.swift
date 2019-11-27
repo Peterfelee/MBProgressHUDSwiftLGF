@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        MBSwiftHelper.share.autoShow(InView: nil, withAnimated: true, delayTime: 1)
         buttonTitles.enumerated().forEach { (offset: Int, element: String) in
             let temp = createButton(title: element)
             temp.tag = offset + 1

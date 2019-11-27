@@ -95,11 +95,13 @@ extension MBProgressHudSwift{
         
     }
     
-   public func hide(animated:Bool,afterDelay:TimeInterval){
-        hideDelayTimer?.invalidate()
-        let timer = Timer.init(timeInterval: afterDelay, target: self, selector: #selector(handleHideTimer(timer:)), userInfo: nil, repeats: false)
-    RunLoop.current.add(timer, forMode: .common)
-        hideDelayTimer = timer
+    public func hide(animated:Bool,afterDelay:TimeInterval){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.hideDelayTimer?.invalidate()
+            let timer = Timer.init(timeInterval: afterDelay, target: self, selector: #selector(self.handleHideTimer(timer:)), userInfo: nil, repeats: false)
+            RunLoop.current.add(timer, forMode: .common)
+            self.hideDelayTimer = timer
+        }
     }
 }
 
