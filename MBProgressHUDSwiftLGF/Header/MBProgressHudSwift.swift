@@ -51,14 +51,17 @@ extension MBProgressHudSwift{
         minShowTimer?.invalidate()
         useAnimation = animated
         hasFinished = false
-    if self.superview == nil
-    {
-        if let temp = MBProgressHudSwift.Hud(forView: UIApplication.shared.keyWindow!)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        if self.superview == nil
         {
-            temp.removeFromSuperview()
+            if let temp = MBProgressHudSwift.Hud(forView: UIApplication.shared.keyWindow!)
+            {
+                temp.removeFromSuperview()
+            }
+            UIApplication.shared.keyWindow?.addSubview(self)
         }
-        UIApplication.shared.keyWindow?.addSubview(self)
     }
+ 
         if graceTime > 0.0{
             let timer = Timer.init(timeInterval: graceTime, target: self, selector: #selector(handleGraceTimer(timer:)), userInfo: nil, repeats: false)
             RunLoop.current.add(timer, forMode: .common)
@@ -108,7 +111,9 @@ extension MBProgressHudSwift{
     class  public func showHud(addedToView view:UIView,withAnimated animated:Bool) -> MBProgressHudSwift{
         let hud = MBProgressHudSwift(view: view)
         hud.removeFromSuperViewOnHide = true
-        view.addSubview(hud)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            view.addSubview(hud)
+        }
         hud.show(animated: animated)
         return hud
     }

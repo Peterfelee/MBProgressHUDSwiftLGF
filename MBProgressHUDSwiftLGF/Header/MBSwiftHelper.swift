@@ -32,21 +32,24 @@ public class MBSwiftHelper: NSObject {
             }
         }
         hud?.mode = .Indeterminate
-        if view == nil
-        {
-            UIApplication.shared.keyWindow?.addSubview(hud!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if view == nil
+            {
+                UIApplication.shared.keyWindow?.addSubview(self.hud!)
+            }
+            else
+            {
+                view?.subviews.forEach({ (view) in
+                    if view.isKind(of: MBProgressHudSwift.classForCoder())
+                    {
+                        view.removeFromSuperview()
+                    }
+                })
+                view!.addSubview(self.hud!)
+            }
+            self.hud?.show(animated: animated)
+
         }
-        else
-        {
-            view?.subviews.forEach({ (view) in
-                if view.isKind(of: MBProgressHudSwift.classForCoder())
-                {
-                    view.removeFromSuperview()
-                }
-            })
-            view!.addSubview(hud!)
-        }
-        hud?.show(animated: animated)
     }
     public func show(InView view:UIView?)
     {
