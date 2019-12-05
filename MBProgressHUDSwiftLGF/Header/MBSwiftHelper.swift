@@ -107,10 +107,14 @@ public class MBSwiftHelper: NSObject {
       /**手动隐藏*/
       public func hidden(withAnimated animated:Bool = true,delayTime delay:Float = 1)
       {
-          if hud != nil {
-              hud!.hide(animated: animated, afterDelay: TimeInterval(delay))
-          }
-      }
+        if hud != nil {
+            hud!.hide(animated: animated, afterDelay: TimeInterval(delay))
+        }
+        if let view:UIView = UIApplication.shared.keyWindow, let temp:MBProgressHudSwift = MBProgressHudSwift.Hud(forView: view)
+        {
+            temp.hide(animated: animated, afterDelay: TimeInterval(delay))
+        }
+    }
       
       /**手动隐藏*/
       public func hidden(){
