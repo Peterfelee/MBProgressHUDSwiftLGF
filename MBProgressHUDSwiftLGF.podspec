@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'MBProgressHUDSwiftLGF'
-s.version = '1.1.1'
+s.version = '1.1.2'
 s.license = 'MIT'
 s.summary = 'An MBProgressHUD With Swift5.0 on iOS.'
 s.homepage = 'https://github.com/Peterfelee/MBProgressHUDSwiftLGF'

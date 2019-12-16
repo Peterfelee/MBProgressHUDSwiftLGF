@@ -15,7 +15,7 @@ public class MBSwiftHelper: NSObject {
     private var action:(()->())?
     
     /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
-    public func show(InView view:UIView?,withAnimated animated:Bool = true)
+    public func show(InView view:UIView?,withAnimated animated:Bool = true,completion:(()->())?)
     {
         hud?.removeFromSuperview()
         hud = nil
@@ -47,14 +47,14 @@ public class MBSwiftHelper: NSObject {
                 view!.addSubview(self.hud!)
             }
             self.hud?.show(animated: animated)
-
+            if completion != nil {completion!()}
         }
     }
     
     /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
     public func show(InView view:UIView?)
     {
-        show(InView: view, withAnimated: true)
+        show(InView: view, withAnimated: true,completion:nil)
     }
     /**显示在keywindow 需要手动隐藏 hidden*/
     public func show(){
@@ -125,8 +125,10 @@ public class MBSwiftHelper: NSObject {
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏*/
     public func autoShow(InView view:UIView?,withAnimated animated:Bool = true,delayTime delay:Float = 1)
     {
-        show(InView: view, withAnimated: animated)
-        hidden(delayTime: delay)
+        show(InView: view, withAnimated: animated,completion: {[weak self] in
+            self?.hidden(delayTime: delay)
+        })
+        
     }
     
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏*/
