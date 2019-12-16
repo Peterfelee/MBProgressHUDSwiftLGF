@@ -14,7 +14,7 @@
 		E7A1755C2350790C00B600C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A1755A2350790C00B600C6 /* Main.storyboard */; };
 		E7A1755E2350790F00B600C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7A1755D2350790F00B600C6 /* Assets.xcassets */; };
 		E7A175612350790F00B600C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A1755F2350790F00B600C6 /* LaunchScreen.storyboard */; };
-		E7A175692350793000B600C6 /* MBProgressHudSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */; };
+		E7A175692350793000B600C6 /* MBProgressHudSwiftLGF.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A175682350792F00B600C6 /* MBProgressHudSwiftLGF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		E7A1755D2350790F00B600C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7A175602350790F00B600C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7A175622350790F00B600C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHudSwift.swift; sourceTree = "<group>"; };
+		E7A175682350792F00B600C6 /* MBProgressHudSwiftLGF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHudSwiftLGF.swift; sourceTree = "<group>"; };
 		E7FD3F71235180ED001359BE /* MBProgressHUDSwiftLGF-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUDSwiftLGF-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,7 @@
 		E753F18F2359AB9500EC1952 /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				E7A175682350792F00B600C6 /* MBProgressHudSwift.swift */,
+				E7A175682350792F00B600C6 /* MBProgressHudSwiftLGF.swift */,
 				E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */,
 			);
 			path = Header;
@@ -221,7 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A175592350790C00B600C6 /* ViewController.swift in Sources */,
-				E7A175692350793000B600C6 /* MBProgressHudSwift.swift in Sources */,
+				E7A175692350793000B600C6 /* MBProgressHudSwiftLGF.swift in Sources */,
 				E753F18E2359A02A00EC1952 /* MBSwiftHelper.swift in Sources */,
 				E7A175552350790C00B600C6 /* AppDelegate.swift in Sources */,
 			);

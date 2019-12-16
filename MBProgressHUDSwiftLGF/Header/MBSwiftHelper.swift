@@ -1,6 +1,6 @@
 //
 //  MBSwiftHelper.swift
-//  MBProgressHUDSwiftLGF
+//  MBProgressHudSwiftLGFLGF
 //
 //  Created by peterlee on 2019/10/18.
 //  Copyright © 2019 Personal. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 
 public class MBSwiftHelper: NSObject {
     
-    private var hud:MBProgressHudSwift?
+    private var hud:MBProgressHudSwiftLGF?
     public  static let share:MBSwiftHelper = MBSwiftHelper()
     private var action:(()->())?
     
@@ -23,11 +23,11 @@ public class MBSwiftHelper: NSObject {
         {
             if view == nil
             {
-                hud = MBProgressHudSwift()
+                hud = MBProgressHudSwiftLGF()
             }
             else
             {
-                hud = MBProgressHudSwift(view: view!)
+                hud = MBProgressHudSwiftLGF(view: view!)
             }
         }
         hud?.mode = .Indeterminate
@@ -39,7 +39,7 @@ public class MBSwiftHelper: NSObject {
             else
             {
                 view?.subviews.forEach({ (view) in
-                    if view.isKind(of: MBProgressHudSwift.classForCoder())
+                    if view.isKind(of: MBProgressHudSwiftLGF.classForCoder())
                     {
                         view.removeFromSuperview()
                     }
@@ -110,7 +110,7 @@ public class MBSwiftHelper: NSObject {
         if hud != nil {
             hud!.hide(animated: animated, afterDelay: TimeInterval(delay))
         }
-        if let view:UIView = UIApplication.shared.keyWindow, let temp:MBProgressHudSwift = MBProgressHudSwift.Hud(forView: view)
+        if let view:UIView = UIApplication.shared.keyWindow, let temp:MBProgressHudSwiftLGF = MBProgressHudSwiftLGF.Hud(forView: view)
         {
             temp.hide(animated: animated, afterDelay: TimeInterval(delay))
         }

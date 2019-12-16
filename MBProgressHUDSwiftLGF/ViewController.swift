@@ -42,7 +42,7 @@ extension ViewController{
         case 3://展示透明背景的菊花转 可以自动移除
             MBSwiftHelper.share.autoShow()
         case 5://展示有背景色的菊花转
-            let hud = MBProgressHudSwift(frame: .zero)
+            let hud = MBProgressHudSwiftLGF(frame: .zero)
             hud.show(animated: true)
             hud.backgroundColor = UIColor.green.withAlphaComponent(0.2)
             hud.hide(animated: true, afterDelay: 1.5)
