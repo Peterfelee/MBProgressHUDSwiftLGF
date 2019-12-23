@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import LGFHelper
 
 
 class ViewController: UIViewController {
@@ -40,7 +41,7 @@ extension ViewController{
         case 2://展示一个多行的文字，过长的话自动换行
             MBSwiftHelper.share.showMessage(Message: btn.currentTitle)
         case 3://展示透明背景的菊花转 可以自动移除
-            MBSwiftHelper.share.autoShow()
+            MBSwiftHelper.share.autoShow(backgroundColor: .cyan)
         case 5://展示有背景色的菊花转
             let hud = MBProgressHudSwiftLGF(frame: .zero)
             hud.show(animated: true)
@@ -53,6 +54,7 @@ extension ViewController{
             })
         }
         MBSwiftHelper.share.hidden()
+        LGFSettingManager.share.setBool(value: false, key: "nice")
 
     }
 

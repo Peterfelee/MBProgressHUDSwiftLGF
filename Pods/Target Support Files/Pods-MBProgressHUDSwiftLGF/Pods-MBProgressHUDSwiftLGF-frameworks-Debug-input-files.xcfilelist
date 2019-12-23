@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-MBProgressHUDSwiftLGF/Pods-MBProgressHUDSwiftLGF-frameworks.sh
+${BUILT_PRODUCTS_DIR}/LGFHelper/LGFHelper.framework
 ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

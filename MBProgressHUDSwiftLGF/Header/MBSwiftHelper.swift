@@ -11,11 +11,15 @@ import UIKit
 public class MBSwiftHelper: NSObject {
     
     private var hud:MBProgressHudSwiftLGF?
-    public  static let share:MBSwiftHelper = MBSwiftHelper()
+    public  static let share:MBSwiftHelper = MBSwiftHelper(para: 0)
     private var action:(()->())?
     
+    private init(para:Int) {
+        super.init()
+    }
+    
     /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
-    public func show(InView view:UIView?,withAnimated animated:Bool = true,completion:(()->())?)
+    public func show(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor ,completion:(()->())?)
     {
         hud?.removeFromSuperview()
         hud = nil
@@ -31,6 +35,7 @@ public class MBSwiftHelper: NSObject {
             }
         }
         hud?.mode = .Indeterminate
+        hud?.backgroundColor = backgroundColor
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if view == nil
             {
@@ -52,9 +57,9 @@ public class MBSwiftHelper: NSObject {
     }
     
     /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
-    public func show(InView view:UIView?)
+    public func show(InView view:UIView?,backgroundColor:UIColor = .clear)
     {
-        show(InView: view, withAnimated: true,completion:nil)
+        show(InView: view, withAnimated: true,backgroundColor: backgroundColor,completion:nil)
     }
     /**显示在keywindow 需要手动隐藏 hidden*/
     public func show(){
@@ -123,9 +128,9 @@ public class MBSwiftHelper: NSObject {
  
 ////autoshow
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏*/
-    public func autoShow(InView view:UIView?,withAnimated animated:Bool = true,delayTime delay:Float = 1)
+    public func autoShow(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor = .clear,delayTime delay:Float = 1)
     {
-        show(InView: view, withAnimated: animated,completion: {[weak self] in
+        show(InView: view, withAnimated: animated,backgroundColor: backgroundColor,completion: {[weak self] in
             self?.hidden(delayTime: delay)
         })
         
@@ -173,6 +178,16 @@ public class MBSwiftHelper: NSObject {
     }
     
     
+    /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏,默认是白色背景的菊花转*/
+    public func autoShow(backgroundColor:UIColor = .white)
+        {
+           autoShow(InView: nil,backgroundColor: backgroundColor)
+       }
+    /**显示在keywindow 需要手动隐藏 hidden，默认是白色背景的菊花转*/
+    public func show(backgroundColor:UIColor = .white){
+           show(InView: nil,backgroundColor: backgroundColor)
+       }
+       
 }
 
 extension MBSwiftHelper{

@@ -6,5 +6,5 @@ target 'MBProgressHUDSwiftLGF' do
   use_frameworks!
   pod 'SnapKit'
   pod 'MBProgressHUD'
-
+  pod 'LGFHelper'
 end
