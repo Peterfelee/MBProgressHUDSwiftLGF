@@ -180,13 +180,13 @@ public class MBSwiftHelper: NSObject {
     
     
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏,默认是白色背景的菊花转*/
-    public func autoShow(backgroundColor:UIColor = .white)
+    public func autoShow(backgroundColor:UIColor = .white,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6))
         {
-           autoShow(InView: nil,backgroundColor: backgroundColor)
+            autoShow(InView: nil,backgroundColor: backgroundColor,contentColor: contentColor)
        }
     /**显示在keywindow 需要手动隐藏 hidden，默认是白色背景的菊花转*/
-    public func show(backgroundColor:UIColor = .white){
-           show(InView: nil,backgroundColor: backgroundColor)
+    public func show(backgroundColor:UIColor = .white,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+           show(InView: nil,backgroundColor: backgroundColor,contentColor: contentColor)
        }
        
 }
