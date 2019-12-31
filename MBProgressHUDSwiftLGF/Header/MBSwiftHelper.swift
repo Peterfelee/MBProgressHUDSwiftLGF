@@ -18,8 +18,8 @@ public class MBSwiftHelper: NSObject {
         super.init()
     }
     
-    /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
-    public func show(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor ,completion:(()->())?)
+    /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden  ,backgroundColor  背景色 contentColor显示文字或按钮的背景色*/
+    public func show(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor ,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6),completion:(()->())?)
     {
         hud?.removeFromSuperview()
         hud = nil
@@ -36,6 +36,7 @@ public class MBSwiftHelper: NSObject {
         }
         hud?.mode = .Indeterminate
         hud?.backgroundColor = backgroundColor
+        hud?.bezelView.color = contentColor
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if view == nil
             {
@@ -57,36 +58,36 @@ public class MBSwiftHelper: NSObject {
     }
     
     /**显示在view？ view为nil的时候显示在keywindow 需要手动隐藏 hidden*/
-    public func show(InView view:UIView?,backgroundColor:UIColor = .clear)
+    public func show(InView view:UIView?,backgroundColor:UIColor = .clear,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6))
     {
-        show(InView: view, withAnimated: true,backgroundColor: backgroundColor,completion:nil)
+        show(InView: view, withAnimated: true,backgroundColor: backgroundColor,contentColor: contentColor,completion:nil)
     }
     /**显示在keywindow 需要手动隐藏 hidden*/
-    public func show(){
-        show(InView: nil)
+    public func show(contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+        show(InView: nil,contentColor: contentColor)
     }
     
     /**显示在keywindow 单行的文字 需要手动隐藏 */
-    public func showTitle(titleString title:String?){
+    public func showTitle(titleString title:String?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
         if title == nil || title!.isEmpty{
-            show()
+            show(contentColor: contentColor)
         }
         else
         {
-            show()
+            show(contentColor: contentColor)
             hud?.mode = .Text
             hud?.label.text = title
         }
     }
     
     /**显示在keywindow 多行的文字 需要手动隐藏 */
-    public func showMessage(Message msg:String?){
+    public func showMessage(Message msg:String?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
         if msg == nil || msg!.isEmpty{
-            show()
+            show(contentColor: contentColor)
         }
         else
         {
-            show()
+            show(contentColor: contentColor)
             hud?.mode = .Text
             hud?.detailLabel.text = msg
         }
@@ -96,8 +97,8 @@ public class MBSwiftHelper: NSObject {
     
     
      /**显示在keywindow 按钮样式可增加点击事件 需要手动隐藏 */
-    public func showActionButton(buttonTitle title:String?,buttonImage image:UIImage?,buttonAction action:(()->())?){
-        show()
+    public func showActionButton(buttonTitle title:String?,buttonImage image:UIImage?,buttonAction action:(()->())?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+        show(contentColor: contentColor)
         hud?.mode = .Text
         hud?.button.setTitle(title, for: .normal)
         hud?.button.setImage(image, for: .normal)
@@ -128,48 +129,48 @@ public class MBSwiftHelper: NSObject {
  
 ////autoshow
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏*/
-    public func autoShow(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor = .clear,delayTime delay:Float = 1)
+    public func autoShow(InView view:UIView?,withAnimated animated:Bool = true,backgroundColor:UIColor = .clear,delayTime delay:Float = 1,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6))
     {
-        show(InView: view, withAnimated: animated,backgroundColor: backgroundColor,completion: {[weak self] in
+        show(InView: view, withAnimated: animated,backgroundColor: backgroundColor,contentColor: contentColor,completion: {[weak self] in
             self?.hidden(delayTime: delay)
         })
         
     }
     
     /**显示在view？ view为nil的时候显示在keywindow 不需要手动隐藏*/
-    public func autoShow(){
-        autoShow(InView: nil)
+    public func autoShow(contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+        autoShow(InView: nil,contentColor: contentColor)
     }
     
     /**显示在keywindow 单行的文字 不需要手动隐藏 */
-    public func autoShowTitle(titleString title:String?){
+    public func autoShowTitle(titleString title:String?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
         if title == nil || title!.isEmpty{
-            autoShow()
+            autoShow(contentColor: contentColor)
         }
         else
         {
-            autoShow()
+            autoShow(contentColor: contentColor)
             hud?.mode = .Text
             hud?.label.text = title
         }
     }
     
     /**显示在keywindow 多行的文字 不需要手动隐藏 */
-    public func autoShowMessage(Message msg:String?){
+    public func autoShowMessage(Message msg:String?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
         if msg == nil || msg!.isEmpty{
-            autoShow()
+            autoShow(contentColor: contentColor)
         }
         else
         {
-            autoShow()
+            autoShow(contentColor: contentColor)
             hud?.mode = .Text
             hud?.detailLabel.text = msg
         }
     }
     
      /**显示在keywindow 按钮样式可增加点击事件 不需要手动隐藏 */
-    public func autoShowActionButton(buttonTitle title:String?,buttonImage image:UIImage?,buttonAction action:(()->())?){
-        autoShow()
+    public func autoShowActionButton(buttonTitle title:String?,buttonImage image:UIImage?,buttonAction action:(()->())?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+        autoShow(contentColor: contentColor)
         hud?.mode = .Text
         hud?.button.setTitle(title, for: .normal)
         hud?.button.setImage(image, for: .normal)

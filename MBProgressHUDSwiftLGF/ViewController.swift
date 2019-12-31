@@ -37,7 +37,7 @@ extension ViewController{
     @objc private func testClick(btn:UIButton){
         switch btn.tag {
         case 1://展示一个单行的文字，过长的话自动省略显示
-            MBSwiftHelper.share.autoShowTitle(titleString: btn.currentTitle)
+            MBSwiftHelper.share.autoShowTitle(titleString: btn.currentTitle,contentColor: UIColor.green)
         case 2://展示一个多行的文字，过长的话自动换行
             MBSwiftHelper.share.showMessage(Message: btn.currentTitle)
         case 3://展示透明背景的菊花转 可以自动移除
