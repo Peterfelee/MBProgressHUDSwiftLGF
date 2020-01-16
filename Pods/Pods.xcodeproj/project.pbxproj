@@ -96,7 +96,7 @@
 		1A69D76F3BC3925D5EC7C47D86DF1836 /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
 		1D88122A8388F6004A72B5EF6716DBEE /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		1F7392EB8A8D9403629BFB7F94DF5877 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
-		2D504FCF94888553417E35F953D7A93D /* LGFHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LGFHelper.framework; path = LGFHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D504FCF94888553417E35F953D7A93D /* LGFHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LGFHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FCDB017CBC38C520888B923F44CA2B9 /* Pods-MBProgressHUDSwiftLGF-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBProgressHUDSwiftLGF-acknowledgements.plist"; sourceTree = "<group>"; };
 		32EA7C7E2533E7FF8D4B8285F6502F39 /* Pods-MBProgressHUDSwiftLGF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MBProgressHUDSwiftLGF.release.xcconfig"; sourceTree = "<group>"; };
 		3423CBE9A5AE2D48FC7AC8B795D8ED73 /* Pods-MBProgressHUDSwiftLGF-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MBProgressHUDSwiftLGF-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		7AD5925209996CD94D0BA287FD867A87 /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		8426419DA854A730CB921EC274EB1F30 /* LGFHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LGFHelper.modulemap; sourceTree = "<group>"; };
 		8A8ACEBAADC0881BE2CD6B3232F2FCC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCE656BB6591695E0C20DC4875E5FEA /* LGFSettingManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LGFSettingManager.swift; path = LGFHelper/Common/LGFSettingManager.swift; sourceTree = "<group>"; };
 		8DFDA5CDCEC0C659170F210D5A278B42 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		8EC5B972FC67B72B56B863C301811A18 /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
@@ -132,8 +132,8 @@
 		9178471FCF6F2166AF2CA6B0BD5FA782 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		95BDF5CB06A0D67153437200D5AB57E4 /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		9714716C43F033C668628900AFC244EF /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DC4D51E3C8C64CBA3A223E5D87EF699 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
 		9E4AC974569ED18C70D7F2A79EFD54F8 /* Pods-MBProgressHUDSwiftLGF-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MBProgressHUDSwiftLGF-Info.plist"; sourceTree = "<group>"; };
 		9E783BCA499113A35D76D4D73AF6F3BA /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		BF14A224474EB38EE70C6244755B3C9F /* LGFHelper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LGFHelper-umbrella.h"; sourceTree = "<group>"; };
 		C4575CA7E8EAF4761EABB7434E39339B /* MBProgressHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.debug.xcconfig; sourceTree = "<group>"; };
 		C4B15CBF1AC6E625CF1C806E5C888DBF /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
-		C736D2038C3037B3CD8C03BB2B83F246 /* Pods_MBProgressHUDSwiftLGF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MBProgressHUDSwiftLGF.framework; path = "Pods-MBProgressHUDSwiftLGF.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C736D2038C3037B3CD8C03BB2B83F246 /* Pods_MBProgressHUDSwiftLGF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBProgressHUDSwiftLGF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB99041CE088F7A613FAF37C15F0B1D8 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		D0EB48B5E6D6957C43945DC4CB1EF9BD /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		D3811ECB1EC7715AF0210582795FE1FD /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
@@ -238,7 +238,6 @@
 				A9383A92B182FA06EF34B1CFFB6A9A83 /* MBProgressHUD.m */,
 				CC284DE4A1359A97EF51B288914CEDA5 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -264,7 +263,6 @@
 				8BCE656BB6591695E0C20DC4875E5FEA /* LGFSettingManager.swift */,
 				F1E9D1BE7944E5D997416A59D775AC64 /* Support Files */,
 			);
-			name = LGFHelper;
 			path = LGFHelper;
 			sourceTree = "<group>";
 		};
@@ -389,7 +387,6 @@
 				43FDF0C07AD9D6320FDBF0CA919B7DD6 /* UILayoutSupport+Extensions.swift */,
 				636DA024CB2C5059A41FD717CFDB9A73 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};

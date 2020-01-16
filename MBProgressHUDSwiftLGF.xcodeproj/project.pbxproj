@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ABE64C7D62AB038638F59C9A /* Pods_MBProgressHUDSwiftLGF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66E7D1A056EDED660CCD505 /* Pods_MBProgressHUDSwiftLGF.framework */; };
 		E753F18E2359A02A00EC1952 /* MBSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */; };
+		E770DE8323CF3A7F007AFBD2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DE8223CF3A7F007AFBD2 /* MainViewController.swift */; };
 		E7A175552350790C00B600C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A175542350790C00B600C6 /* AppDelegate.swift */; };
 		E7A175592350790C00B600C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A175582350790C00B600C6 /* ViewController.swift */; };
 		E7A1755C2350790C00B600C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A1755A2350790C00B600C6 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		896634D5CF6FC12EF252EBF6 /* Pods-MBProgressHUDSwiftLGF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBProgressHUDSwiftLGF.debug.xcconfig"; path = "Target Support Files/Pods-MBProgressHUDSwiftLGF/Pods-MBProgressHUDSwiftLGF.debug.xcconfig"; sourceTree = "<group>"; };
 		D66E7D1A056EDED660CCD505 /* Pods_MBProgressHUDSwiftLGF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBProgressHUDSwiftLGF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSwiftHelper.swift; sourceTree = "<group>"; };
+		E770DE8223CF3A7F007AFBD2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E7A175512350790C00B600C6 /* MBProgressHUDSwiftLGF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBProgressHUDSwiftLGF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A175542350790C00B600C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7A175582350790C00B600C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				E753F18F2359AB9500EC1952 /* Header */,
 				E7A175542350790C00B600C6 /* AppDelegate.swift */,
 				E7A175582350790C00B600C6 /* ViewController.swift */,
+				E770DE8223CF3A7F007AFBD2 /* MainViewController.swift */,
 				E7A1755A2350790C00B600C6 /* Main.storyboard */,
 				E7A1755D2350790F00B600C6 /* Assets.xcassets */,
 				E7A1755F2350790F00B600C6 /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 				E7A175692350793000B600C6 /* MBProgressHudSwiftLGF.swift in Sources */,
 				E753F18E2359A02A00EC1952 /* MBSwiftHelper.swift in Sources */,
 				E7A175552350790C00B600C6 /* AppDelegate.swift in Sources */,
+				E770DE8323CF3A7F007AFBD2 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 89LAKJ7LBL;
+				DEVELOPMENT_TEAM = 7QSMBHVDKR;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -395,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 89LAKJ7LBL;
+				DEVELOPMENT_TEAM = 7QSMBHVDKR;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
