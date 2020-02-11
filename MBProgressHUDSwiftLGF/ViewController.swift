@@ -54,7 +54,7 @@ extension ViewController{
             MBSwiftHelper.share.showActionButton(buttonTitle: btn.currentTitle, buttonImage: nil, buttonAction: {
                 MBSwiftHelper.share.showMessage(Message: "按钮点击事件")
                 MBSwiftHelper.share.hidden(withAnimated: true, delayTime: 2)
-                let mainVC  = MainViewController(bottomVC: BottomViewController(), topVC: TopViewController())
+                let mainVC  = MainViewController()
                 mainVC.modalPresentationStyle = .overFullScreen
                 self.present(mainVC, animated: true, completion: nil)
             })

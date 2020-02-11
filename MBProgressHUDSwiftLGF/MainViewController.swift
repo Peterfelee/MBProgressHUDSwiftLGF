@@ -9,25 +9,24 @@
 import UIKit
 
 
+
+/**中间停留时顶部距离*/
 let headerViewTop:CGFloat = 300
 
+/**底部停留时底部距离*/
+let headerViewBottom:CGFloat = 80
+
+/**顶部的view滑动时传递的代理*/
 protocol SheetScrollDelegate:AnyObject {
     func sheetDidScroll(viewController:UIViewController,didScrollTo contentOffset: CGPoint)
 }
 
+//MARK:主要承载页面
 class MainView:UIView
 {
-    var topDistance:CGFloat = headerViewTop
-    {
-        didSet{
-            topView.snp.updateConstraints { (make) in
-                make.top.equalTo(topDistance)
-                make.left.right.bottom.equalTo(0)
-            }
-        }
-    }
-    
+    /**顶部滑动的view*/
     private var topView:UIView!
+    /**底部滑动的view*/
     private var bottomView:UIView!
     
     init(bottomView:UIView,topView:UIView)
@@ -66,21 +65,21 @@ class MainView:UIView
     }
 }
 
+
+//MARK:主要的承载控制器
 class MainViewController: UIViewController {
     
     private var bottomVC:UIViewController!
     private var topVC:UIViewController!
     
-    init(bottomVC:UIViewController,topVC:UIViewController)
-    {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.bottomVC = bottomVC
-        self.topVC = topVC
-        
+        self.bottomVC = BottomViewController()
+        self.topVC = TopViewController()
         addChild(self.bottomVC)
         addChild(self.topVC)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -90,26 +89,14 @@ class MainViewController: UIViewController {
         let mainView = MainView(bottomView: self.bottomVC.view, topView: self.topVC.view)
         view = mainView
     }
-
     
     override func viewDidLoad() {
-        
         bottomVC.didMove(toParent: self)
         topVC.didMove(toParent: self)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-
+//MARK:底部的控制器 填充自己想要数据主要在这里
 class BottomViewController:UIViewController{
     
     override func viewDidLoad() {
@@ -124,14 +111,13 @@ class BottomViewController:UIViewController{
         }
     }
     
-    
     @objc func buttonclick(btn:UIButton){
         print("btn ---- clicked")
     }
 }
 
 
-
+//MARK:顶部的控制器 填充自己想要数据主要在这里
 class TopViewController:UITableViewController{
     
     let maxVisibleContentHeight = headerViewTop
@@ -158,8 +144,42 @@ class TopViewController:UITableViewController{
     }
     
     
-    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let targetOffset = targetContentOffset.pointee.y
+        let contentoffsetY:CGFloat = scrollView.contentOffset.y
+
+        print("targetOffset = \(targetOffset)")
+        print("contentoffsetY = \(contentoffsetY)")
+        let pulledUpOffset: CGFloat = 0
+        let pulledDownOffset: CGFloat = -maxVisibleContentHeight
+        
+        if contentoffsetY > 0
+        {
+            return
+        }
+        if (pulledDownOffset...pulledUpOffset).contains(targetOffset) {
+            if velocity.y < 0 {
+                targetContentOffset.pointee.y = pulledDownOffset
+            } else {
+                targetContentOffset.pointee.y = pulledUpOffset
+            }
+        }
+        else{
+            if velocity.y > 0 {
+                scrollView.contentInset = UIEdgeInsets(top: maxVisibleContentHeight, left: 0, bottom: 0, right: 0)
+                targetContentOffset.pointee.y =  pulledDownOffset
+
+            }
+            else
+            {
+                scrollView.contentInset = UIEdgeInsets(top: UIScreen.main.bounds.height-headerViewBottom, left: 0, bottom: 0, right: 0)
+                targetContentOffset.pointee.y =  -UIScreen.main.bounds.height + headerViewBottom
+            }
+        }
+    }
 }
+
+
 
 extension TopViewController{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -181,31 +201,6 @@ extension TopViewController{
     }
     
     
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let targetOffset = targetContentOffset.pointee.y
-        print("targetOffset = \(targetOffset)")
-        let pulledUpOffset: CGFloat = 0
-        let pulledDownOffset: CGFloat = -maxVisibleContentHeight
-        
-        if (pulledDownOffset...pulledUpOffset).contains(targetOffset) {
-            if velocity.y < 0 {
-                targetContentOffset.pointee.y = pulledDownOffset
-            } else {
-                targetContentOffset.pointee.y = pulledUpOffset
-            }
-        }
-        else{
-            if velocity.y > 0 {
-                scrollView.contentInset = UIEdgeInsets(top: maxVisibleContentHeight, left: 0, bottom: 0, right: 0)
-                targetContentOffset.pointee.y =  pulledDownOffset
-
-            }
-            else
-            {
-                scrollView.contentInset = UIEdgeInsets(top: UIScreen.main.bounds.height-20, left: 0, bottom: 0, right: 0)
-                targetContentOffset.pointee.y =  -UIScreen.main.bounds.height + 20
-            }
-        }
-    }
+    
     
 }
