@@ -8,4 +8,5 @@ target 'MBProgressHUDSwiftLGF' do
   pod 'SnapKit'
   pod 'MBProgressHUD'
   pod 'LGFHelper'
+  pod 'lottie-ios'
 end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ABE64C7D62AB038638F59C9A /* Pods_MBProgressHUDSwiftLGF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66E7D1A056EDED660CCD505 /* Pods_MBProgressHUDSwiftLGF.framework */; };
+		CF01C5DB2406B172008956DC /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = CF01C5DA2406B172008956DC /* data.json */; };
 		E753F18E2359A02A00EC1952 /* MBSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */; };
 		E770DE8323CF3A7F007AFBD2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E770DE8223CF3A7F007AFBD2 /* MainViewController.swift */; };
 		E7A175552350790C00B600C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A175542350790C00B600C6 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		282E09D516C52299A94A852C /* Pods-MBProgressHUDSwiftLGF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBProgressHUDSwiftLGF.release.xcconfig"; path = "Target Support Files/Pods-MBProgressHUDSwiftLGF/Pods-MBProgressHUDSwiftLGF.release.xcconfig"; sourceTree = "<group>"; };
 		896634D5CF6FC12EF252EBF6 /* Pods-MBProgressHUDSwiftLGF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBProgressHUDSwiftLGF.debug.xcconfig"; path = "Target Support Files/Pods-MBProgressHUDSwiftLGF/Pods-MBProgressHUDSwiftLGF.debug.xcconfig"; sourceTree = "<group>"; };
+		CF01C5DA2406B172008956DC /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		D66E7D1A056EDED660CCD505 /* Pods_MBProgressHUDSwiftLGF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBProgressHUDSwiftLGF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E753F18D2359A02A00EC1952 /* MBSwiftHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSwiftHelper.swift; sourceTree = "<group>"; };
 		E770DE8223CF3A7F007AFBD2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		E7A175532350790C00B600C6 /* MBProgressHUDSwiftLGF */ = {
 			isa = PBXGroup;
 			children = (
+				CF01C5DA2406B172008956DC /* data.json */,
 				E753F18F2359AB9500EC1952 /* Header */,
 				E7A175542350790C00B600C6 /* AppDelegate.swift */,
 				E7A175582350790C00B600C6 /* ViewController.swift */,
@@ -171,6 +174,7 @@
 				E7A175612350790F00B600C6 /* LaunchScreen.storyboard in Resources */,
 				E7A1755E2350790F00B600C6 /* Assets.xcassets in Resources */,
 				E7A1755C2350790C00B600C6 /* Main.storyboard in Resources */,
+				CF01C5DB2406B172008956DC /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K45L764PZG;
+				DEVELOPMENT_TEAM = R8ZCZ7D853;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -399,7 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K45L764PZG;
+				DEVELOPMENT_TEAM = R8ZCZ7D853;
 				INFOPLIST_FILE = MBProgressHUDSwiftLGF/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

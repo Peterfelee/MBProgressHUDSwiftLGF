@@ -62,11 +62,11 @@ public class MBSwiftHelper: NSObject {
     {
         show(InView: view, withAnimated: true,backgroundColor: backgroundColor,contentColor: contentColor,completion:nil)
     }
-    /**显示在keywindow 需要手动隐藏 hidden*/
-    public func show(contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
-        show(InView: nil,contentColor: contentColor)
-    }
     
+    /**显示在keywindow 需要手动隐藏 hidden，默认是白色背景的菊花转*/
+      public func show(backgroundColor:UIColor = .white,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
+             show(InView: nil,backgroundColor: backgroundColor,contentColor: contentColor)
+         }
     /**显示在keywindow 单行的文字 需要手动隐藏 */
     public func showTitle(titleString title:String?,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
         if title == nil || title!.isEmpty{
@@ -183,10 +183,6 @@ public class MBSwiftHelper: NSObject {
     public func autoShow(backgroundColor:UIColor = .white,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6))
         {
             autoShow(InView: nil,backgroundColor: backgroundColor,contentColor: contentColor)
-       }
-    /**显示在keywindow 需要手动隐藏 hidden，默认是白色背景的菊花转*/
-    public func show(backgroundColor:UIColor = .white,contentColor:UIColor = UIColor(white: 0.8, alpha: 0.6)){
-           show(InView: nil,backgroundColor: backgroundColor,contentColor: contentColor)
        }
        
 }

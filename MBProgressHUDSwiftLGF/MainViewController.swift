@@ -150,6 +150,7 @@ class TopViewController:UITableViewController{
 
         print("targetOffset = \(targetOffset)")
         print("contentoffsetY = \(contentoffsetY)")
+        print("velocityY = \(velocity.y)")
         let pulledUpOffset: CGFloat = 0
         let pulledDownOffset: CGFloat = -maxVisibleContentHeight
         
@@ -168,7 +169,6 @@ class TopViewController:UITableViewController{
             if velocity.y > 0 {
                 scrollView.contentInset = UIEdgeInsets(top: maxVisibleContentHeight, left: 0, bottom: 0, right: 0)
                 targetContentOffset.pointee.y =  pulledDownOffset
-
             }
             else
             {
@@ -199,8 +199,4 @@ extension TopViewController{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
-    
-    
-    
 }
