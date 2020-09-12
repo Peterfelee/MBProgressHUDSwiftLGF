@@ -96,5 +96,8 @@ pod 'MBProgressHUDSwiftLGF'
 如果自己想自己定义MBProgressHUDSwiftLGF 可以直接import  MBProgressHUDSwiftLGF，
 如果想简单易用直接import  MBSwiftHelper
 
+欢迎访问我的码云地址：https://gitee.com/LGF_IOS_DEV/dashboard/projects
+如果想简单易用直接import  MBSwiftHelper
+
 
 本代码库是据Matej Bukovinski的MBProgressHUD改成swift版本的，在此感谢Matej Bukovinski，如有问题请联系lgfprivate@sina.com.
